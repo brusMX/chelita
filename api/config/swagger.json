@@ -1,0 +1,278 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "v1",
+        "title": "DX Liquid Intel",
+        "description": "API based on Swagger and built using Node.js for the DX Keggerator "
+    },
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "basePath": "/",
+    "paths": {
+        "/users": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "operationId": "users_get",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/User"
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/users/{id}": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "operationId": "users_getById",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/User"
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/beers": {
+            "get": {
+                "tags": [
+                    "Beers"
+                ],
+                "operationId": "Beers_get",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Beer"
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/beers/{id}": {
+            "get": {
+                "tags": [
+                    "Beers"
+                ],
+                "operationId": "beers_getById",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Beer"
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/kegRefills": {
+            "get": {
+                "tags": [
+                    "Keg"
+                ],
+                "operationId": "kegrefills_get",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/KegRefill"
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/pouredBeer": {
+            "get": {
+                "tags": [
+                    "PouredBeer"
+                ],
+                "operationId": "pouredbeer_get",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/PouredBeer"
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        }
+    },
+    "definitions": {
+        "User": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "badge": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "photo": {
+                    "type": "string"
+                }
+            }
+        },
+        "Beer": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "untappdBID": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "abv": {
+                    "type": "string"
+                },
+                "ibu": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "style": {
+                    "type": "string"
+                }
+            }
+        },
+        "KegRefill": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "beerId": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "setupDateTime": {
+                    "type": "string"
+                },
+                "level": {
+                    "type": "string"
+                },
+                "changedBy": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            }
+        },
+        "PouredBeer": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "beerId": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "userId": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "dateTime": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
